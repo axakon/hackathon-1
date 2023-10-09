@@ -6,9 +6,9 @@
 ```
 OPEN_AI_API_KEY=<key>
 ```
-2. Install dependencies with `npm i`
-3. Create file `prompt.txt` and add your prompt to it.
-4. Run `npm run prompt`, result is outputted to `./public/index.html`
+2. Install dependencies with `npm i`.
+3. Add your prompt to `prompt.txt`.
+4. Run `npm run prompt`, result is outputted to `./public/index.html`.
 5. Open `./public/index.html` or run `npm run game`. If using npm run game, open localhost:8000 in the browser of you choosing.
 
 ## Challenge
