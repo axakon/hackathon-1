@@ -39,7 +39,8 @@ const response = await openAiClient.chat.completions.create({
 
 const content = response.choices[0]?.message.content;
 if (!content) {
-  throw new Error("Chat completion failed, got no message back.");
+  consola.error("Chat completion failed, got no message back.");
+  process.exit(1);
 }
 if (!fs.existsSync("./public")) {
   fs.mkdirSync("./public");
