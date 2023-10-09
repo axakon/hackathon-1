@@ -1,0 +1,21 @@
+{
+  "name": "hackathon-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prompt": "vite-node ./prompt-script.ts",
+    "game": "ws --spa ./public/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "consola": "^3.2.3",
+    "dotenv": "^16.3.1",
+    "local-web-server": "^5.3.0",
+    "openai": "^4.11.1",
+    "vite": "^4.4.11",
+    "vite-node": "^0.34.6"
+  }
+}
