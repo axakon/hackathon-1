@@ -2,13 +2,13 @@
 
 ## Setup
 
-1. Create `.env` file and add Open AI api key, ask someone in the knowledge team for a key.
+1. Create `.env` file and add Open AI API key, ask someone in the knowledge team for a key.
 ```
 OPEN_AI_API_KEY=<key>
 ```
 2. Install dependencies with `npm i`
-3. Create file `prompt.txt` Add your prompt to it.
-4. Run `npm run prompt` which will output the result to `./public/index.html`
+3. Create file `prompt.txt` and add your prompt to it.
+4. Run `npm run prompt`, result is outputted to `./public/index.html`
 5. Open `./public/index.html` or run `npm run game`
 
 ## Challenge
