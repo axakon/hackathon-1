@@ -9,7 +9,7 @@ OPEN_AI_API_KEY=<key>
 2. Install dependencies with `npm i`
 3. Create file `prompt.txt` and add your prompt to it.
 4. Run `npm run prompt`, result is outputted to `./public/index.html`
-5. Open `./public/index.html` or run `npm run game`
+5. Open `./public/index.html` or run `npm run game`. If using npm run game, open localhost:8000 in the browser of you choosing.
 
 ## Challenge
 Generate Tic Tac Toe game using the AI engine that we provide. The code must be in Pure JS + HTML 5. The idea of the challenge is to get people somewhat familiarized with prompting and generating code via a large language model. To make this challenge harder than you think, we have come up with the following constraints:
