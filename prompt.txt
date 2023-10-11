@@ -1,0 +1,13 @@
+I would like for you to make a game for me. You should return only vanilla JavaScript and HTML5. Return no comments, no words, only pure code and nothing else. Your response will be output in an HTML file.
+
+The game should have a 3x3 grid with clickable squares. There are two players. Every even click should put the word AXA in the square, and every odd click should put the word KON in the square. AXA and KON are symbols.
+
+One player wins when three of their symbols are in a row/line, whether diagonally, vertically, or horizontally. When they win, reveal the winner in a JavaScript alert (e.g., JAKE WINS or VANESSA WINS, and show an emoji in the alert). When the player dismisses the alert, restart the game.
+
+Check for win as soon as one player finishes their round and their symbol is visible in the grid. Make sure that their symbol is printed on the grid before the alert appears. To ensure this, wrap all alerts in a settimeout set to 100ms.
+
+Display the current player's turn at the bottom. Name the player's Jake and Vanessa. Make sure that this is displayed below the grid.
+
+Remember that it has to be a three by three (3x3) grid.
+
+Give it a colorful CSS background. Have a nice indigo color scheme.
