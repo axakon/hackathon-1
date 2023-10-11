@@ -1,0 +1,19 @@
+generate a 3 x 3 clickable square grid game
+with the goal of collecting 3 boxes in a row
+
+for example when one player gets 3 of it's symbols in a row, vertically, horizontally or diagonally they win
+otherwise the game continues until all boxes are taken, that results in a draw
+
+
+
+
+
+clicking a square should fill it in for that player with it's player symbol
+
+use AXA and KON as player symbols when a box is clicked
+
+players alternate taking one turn each
+
+only use HTML, css and javascript
+
+please put all the code in one file without external dependencies, and dont explain anything

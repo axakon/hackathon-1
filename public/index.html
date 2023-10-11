@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .game-board {
+        width: 200px;
+        height: 200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .game-board div {
+        background-color: lightgray;
+        text-align: center;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    
+    .game-board div.clicked {
+        background-color: gray;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div class="game-board">
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+        <div onclick="playerMove(this)"></div>
+    </div>
+    <script>
+        let currentPlayer = "AXA";
+        let isGameOver = false;
+        let moves = 0;
+        
+        function playerMove(square) {
+            if (square.innerHTML !== "" || isGameOver) {
+                return;
+            }
+            
+            square.innerHTML = currentPlayer;
+            square.classList.add("clicked");
+            moves++;
+            
+            if (checkWin()) {
+                alert(currentPlayer + " wins!");
+                isGameOver = true;
+                return;
+            } else if (moves === 9) {
+                alert("It's a draw!");
+                isGameOver = true;
+                return;
+            }
+            
+            currentPlayer = currentPlayer === "AXA" ? "KON" : "AXA";
+        }
+        
+        function checkWin() {
+            let board = document.getElementsByClassName("game-board")[0];
+            let squares = board.getElementsByTagName("div");
+            
+            // Horizontal lines
+            if (squares[0].innerHTML === currentPlayer && squares[1].innerHTML === currentPlayer && squares[2].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            if (squares[3].innerHTML === currentPlayer && squares[4].innerHTML === currentPlayer && squares[5].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            if (squares[6].innerHTML === currentPlayer && squares[7].innerHTML === currentPlayer && squares[8].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            // Vertical lines
+            if (squares[0].innerHTML === currentPlayer && squares[3].innerHTML === currentPlayer && squares[6].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            if (squares[1].innerHTML === currentPlayer && squares[4].innerHTML === currentPlayer && squares[7].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            if (squares[2].innerHTML === currentPlayer && squares[5].innerHTML === currentPlayer && squares[8].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            // Diagonal lines
+            if (squares[0].innerHTML === currentPlayer && squares[4].innerHTML === currentPlayer && squares[8].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            if (squares[2].innerHTML === currentPlayer && squares[4].innerHTML === currentPlayer && squares[6].innerHTML === currentPlayer) {
+                return true;
+            }
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
