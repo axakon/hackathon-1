@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prompt": "vite-node ./prompt-script.ts",
+    "prompt": "vite-node ./prompt-script.ts exec",
     "game": "ws --spa ./public/index.html"
   },
   "keywords": [],
