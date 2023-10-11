@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            background-color: indigo;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            color: indigo;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #player-turn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <div class="grid">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <p id="player-turn"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const squares = document.querySelectorAll(".square");
+            const playerTurnElement = document.getElementById("player-turn");
+            let currentPlayer = "Jake";
+
+            squares.forEach(square => {
+                square.addEventListener("click", () => {
+                    if (!square.textContent) {
+                        square.textContent = currentPlayer === "Jake" ? "AXA" : "KON";
+                        square.classList.add(`player-${currentPlayer.toLowerCase()}-symbol`);
+                        checkForWin();
+                        currentPlayer = currentPlayer === "Jake" ? "Vanessa" : "Jake";
+                        playerTurnElement.textContent = `Player's Turn: ${currentPlayer}`;
+                    }
+                });
+            });
+
+            function checkForWin() {
+                const lines = [
+                    [0, 1, 2],
+                    [3, 4, 5],
+                    [6, 7, 8],
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [0, 4, 8],
+                    [2, 4, 6]
+                ];
+
+                for (let i = 0; i < lines.length; i++) {
+                    const [a, b, c] = lines[i];
+                    const symbolA = squares[a].textContent;
+                    const symbolB = squares[b].textContent;
+                    const symbolC = squares[c].textContent;
+
+                    if (symbolA && symbolA === symbolB && symbolA === symbolC) {
+                        setTimeout(() => {
+                            alert(`${currentPlayer.toUpperCase()} WINS! \uD83C\uDFC6`);
+                            resetGame();
+                        }, 100);
+                    }
+                }
+            }
+
+            function resetGame() {
+                squares.forEach(square => {
+                    square.textContent = "";
+                    square.className = "square";
+                });
+                currentPlayer = "Jake";
+                playerTurnElement.textContent = `Player's Turn: ${currentPlayer}`;
+            }
+
+            playerTurnElement.textContent = `Player's Turn: ${currentPlayer}`;
+        });
+    </script>
+</body>
+</html>
