@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Witcher 4</title>
+	<style>
+		body {
+			background-color: #f4f4f4;
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: Arial, sans-serif;
+		}
+		
+		.container {
+			border: 2px solid #333;
+			border-radius: 5px;
+			padding: 20px;
+			background-color: #fff;
+		}
+		
+		.header {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 10px;
+		}
+		
+		.square {
+			width: 100%;
+			height: 100px;
+			background-color: #eee;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 36px;
+			cursor: pointer;
+		}
+		
+		.winner {
+			background-color: #c1ffc1;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">The Witcher 4</div>
+		<div class="grid">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
+	</div>
+	
+	<script>
+		// Keep track of the current player
+		let currentPlayer = 1;
+		
+		// Initialize the grid with empty values
+		let grid = [
+			'', '', '',
+			'', '', '',
+			'', '', ''
+		];
+		
+		// Get all the squares
+		const squares = Array.from(document.getElementsByClassName('square'));
+		
+		// Add click event listeners to the squares
+		squares.forEach(square => square.addEventListener('click', handleClick));
+		
+		// Handle the square click event
+		function handleClick(event) {
+			const squareIndex = squares.indexOf(event.target);
+			
+			// Check if the square is already occupied
+			if (grid[squareIndex] !== '') {
+				return;
+			}
+			
+			// Place the player marker in the clicked square
+			grid[squareIndex] = currentPlayer === 1 ? 'AXA' : 'KON';
+			
+			// Render the player marker in the clicked square
+			event.target.textContent = currentPlayer === 1 ? 'AXA' : 'KON';
+			
+			// Check if there is a winner
+			if (checkWinner()) {
+				showAlert(`Player ${currentPlayer} wins!`);
+				highlightWinner();
+				return;
+			}
+			
+			// Check if the grid is full and there is no winner
+			if (grid.every(square => square !== '')) {
+				showAlert("The game resulted in a draw!");
+				return;
+			}
+			
+			// Switch to the next player
+			currentPlayer = currentPlayer === 1 ? 2 : 1;
+		}
+		
+		// Check if there is a winner
+		function checkWinner() {
+			const winningCombinations = [
+				[0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+				[0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+				[0, 4, 8], [2, 4, 6]             // diagonals
+			];
+			
+			return winningCombinations.some(combination => {
+				return (
+					grid[combination[0]] === grid[combination[1]] &&
+					grid[combination[1]] === grid[combination[2]] &&
+					grid[combination[0]] !== ''
+				);
+			});
+		}
+		
+		// Show a victory alert with the winner message
+		function showAlert(message) {
+			alert(message);
+			
+			// Restart the game
+			restartGame();
+		}
+		
+		// Highlight the winning row
+		function highlightWinner() {
+			const winningCombinations = [
+				[0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+				[0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+				[0, 4, 8], [2, 4, 6]             // diagonals
+			];
+			
+			winningCombinations.forEach(combination => {
+				const [a, b, c] = combination;
+				
+				if (grid[a] === grid[b] && grid[a] === grid[c] && grid[a] !== '') {
+					squares[a].classList.add('winner');
+					squares[b].classList.add('winner');
+					squares[c].classList.add('winner');
+				}
+			});
+		}
+		
+		// Restart the game
+		function restartGame() {
+			// Reset grid values
+			grid = [
+				'', '', '',
+				'', '', '',
+				'', '', ''
+			];
+			
+			// Remove player markers from squares
+			squares.forEach(square => {
+				square.textContent = '';
+				square.classList.remove('winner');
+			});
+			
+			// Reset current player
+			currentPlayer = 1;
+		}
+	</script>
+</body>
+</html>

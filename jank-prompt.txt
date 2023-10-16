@@ -1,0 +1,9 @@
+Build a game in a single HTML file. Do not use any libs, just pure js and html code. 
+The game takes place on a 3x3 grid, where the players take turns clicking an empty grid square. 
+Player 1 places AXA in the square when they click on an empty square.
+Player 2 places KON in the square when they click on an empty square.
+The goal is to get 3 of a kind in a row, either AXA or KON. 
+If there are 3 AXA in a row, player 1 wins.
+If there are 3 KON in a row, player 2 wins.
+
+Don't explain anything, just provide the game.

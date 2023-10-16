@@ -1,0 +1,19 @@
+Build a game in a single HTML file. Do not use any libs, just pure js and html code.
+The title of the game is The Witcher 4.
+The game takes place on a 3x3 grid with equal spacing between the grid squares, where the players take turns clicking an empty grid square. 
+The grid should take up half of the viewport.
+The square should take up most of the grid visually.
+Display the title over the grid.
+Center the grid in the viewport.
+Player 1 places AXA in the square when they click on an empty square.
+Player 2 places KON in the square when they click on an empty square.
+The goal is to get 3 of a kind in a row, either AXA or KON. 
+If there are 3 AXA in a row, player 1 wins.
+If there are 3 KON in a row, player 2 wins.
+If a player wins, provide a victory alert stating who won.
+If the grid is full, and neither player has won, provide an alert saying the game has resulted in a draw.
+Before providing the an alert, render the AXA or KON in the clicked square.
+If there is a victory alert, highlight the winning row.
+Restart the game when either alert has been dismissed.
+
+Don't explain anything, just provide the game.

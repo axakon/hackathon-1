@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background-color: lightgray;
+      font-size: 50px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div class="grid">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+
+  <script>
+    function checkWinner() {
+      const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
+        [0, 4, 8], [2, 4, 6] // diagonal
+      ];
+
+      const cells = document.getElementsByClassName('cell');
+      const symbols = ['AXA', 'KON'];
+
+      for (let symbol of symbols) {
+        for (let combination of winningCombinations) {
+          if (
+            cells[combination[0]].innerHTML === symbol &&
+            cells[combination[1]].innerHTML === symbol &&
+            cells[combination[2]].innerHTML === symbol
+          ) {
+            return symbol;
+          }
+        }
+      }
+
+      return null;
+    }
+
+    function checkDraw() {
+      const cells = document.getElementsByClassName('cell');
+
+      for (let cell of cells) {
+        if (cell.innerHTML === '') {
+          return false; // The grid is not full
+        }
+      }
+
+      return true; // The grid is full
+    }
+
+    const cells = document.getElementsByClassName('cell');
+    let currentPlayer = 1;
+
+    for (let cell of cells) {
+      cell.addEventListener('click', function() {
+        if (this.innerHTML === '') {
+          this.innerHTML = currentPlayer === 1 ? 'AXA' : 'KON';
+
+          const winner = checkWinner();
+          const isDraw = checkDraw();
+
+          if (winner) {
+            alert(`Player ${currentPlayer} wins!`);
+            location.reload();
+          } else if (isDraw) {
+            alert('The game has resulted in a draw.');
+            location.reload();
+          } else {
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
