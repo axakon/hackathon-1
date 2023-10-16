@@ -1,0 +1,12 @@
+Background:
+* The game has two players. Please generate a cool name for both of them with an unique square symbol as well as a "won game counter" next to the players's name.
+* When one player wins the game, bump the "won game counter" for the player.
+* Create a 3 by 3 grid.
+* Each cell should be claimable, with the two players taking turn. Claimed cells should get his player's unique symbol.
+* Each player can only claim three cells maximum. So when a player who's turn it is, has already claimed three cells, the player must first remove a claim for an old claimed cell before claiming a new one.
+* The first player to get three cells in a row wins.
+* When a player wins do some flashy indication on what three in a row claimed cells won the game.
+* A big "new game" button should reset the field, but keep the counters.
+
+Requirement:
+Only output the code for the website. Do not include any descriptions or explanations or comments.
