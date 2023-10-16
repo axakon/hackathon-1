@@ -1,0 +1,12 @@
+I'm using HTML and pure JavaScript to write a game with the following rules:
+- 2 players 
+- The game has a 3x3 grid
+- The game is turn-based
+- One player wins when they have 3 tokens placed on the grid that form a straight line (horizontal, vertical or diagonal)
+- If no possible moves are left for either player, have a button that can reset the board
+- When a player wins, show a cool win message using Alert() and reset the game board when the Alert is accepted. Wait 1 second before showing the alert
+- Player 1 has the token "AXA" and player 2 has the token "KON"
+- Player 2 should be a selectable AI opponent. It is selected using a button at the start of the game. The player starting is random when using AI opponent. The AI should use the MinMax algorithm. 
+- Please use pretty colors and make it look kinda cool
+
+Please put all code in the same file, with no external dependencies. Please do not write anything other than the resulting code in your answer. Do not explain anything.
